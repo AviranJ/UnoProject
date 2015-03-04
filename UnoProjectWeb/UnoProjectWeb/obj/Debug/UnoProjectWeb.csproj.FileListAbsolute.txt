@@ -1,0 +1,5 @@
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.dll
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.pdb
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.dll
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.pdb
