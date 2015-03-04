@@ -19,10 +19,11 @@
 	</tr>
 	<tr style="background-color:#f5f4ed;text-align:center;">
 		<td style="padding:4px 20px 4px 20px;">
-		    <input type="reset" value="Sign up" />
+		    <asp:Button ID="ButtonSignUp" UseSubmitBehavior="true" Text="Sign up" runat="server" ValidationGroup="Login"/> 
+		    <asp:CustomValidator ID="CustomValidatorButtonSignUp" OnServerValidate="CustomValidatorButtonSignUp" />
 		</td>		
 		<td style="padding:4px 20px 4px 20px;">	            
-            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login"/>            
+            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login" />            
          </td>
 	</tr>	
 </table>

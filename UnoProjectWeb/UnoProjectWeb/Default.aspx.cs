@@ -21,5 +21,10 @@ namespace UnoProjectWeb
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
         }
+
+        protected void CustomValidatorButtonSignUp(object sender, EventArgs e)
+        {
+
+        }
     }
 }

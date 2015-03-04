@@ -71,6 +71,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dev.aspx.cs">
+      <DependentUpon>Dev.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dev.aspx.designer.cs">
+      <DependentUpon>Dev.aspx</DependentUpon>
+    </Compile>
     <Compile Include="enums\UnoCards.cs" />
     <Compile Include="enums\UnoColours.cs" />
     <Compile Include="master.Master.cs">
@@ -83,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dev.aspx" />
     <Content Include="master.Master" />
   </ItemGroup>
   <ItemGroup>
