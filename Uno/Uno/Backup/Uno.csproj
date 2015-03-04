@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Aviran\Downloads\Uno-1.3.0.0\Uno.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2AD271C-E3C8-48D5-AE47-096FB2B4217B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>Uno</AssemblyName>
+    <ApplicationVersion>1.3.0.0</ApplicationVersion>
+    <RootNamespace>Uno</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tools.cs" />
+    <Compile Include="Cards.cs" />
+    <Compile Include="frmColorSelection.cs" />
+    <Compile Include="Painter.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="frmUserData.cs" />
+    <Compile Include="Deck.cs" />
+    <Compile Include="OpenDeck.cs" />
+    <Compile Include="Animate.cs" />
+    <Compile Include="frmAbout.cs" />
+    <Compile Include="frmUno.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Arguments.cs" />
+    <Compile Include="GameData.cs" />
+    <Compile Include="Logic.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="LoggingLevel.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="UnoCards.cs" />
+    <Compile Include="UnoColours.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmAbout.resx" />
+    <EmbeddedResource Include="frmColorSelection.resx" />
+    <EmbeddedResource Include="frmUno.resx" />
+    <EmbeddedResource Include="frmUserData.resx" />
+    <EmbeddedResource Include="Images\+2b.png" />
+    <EmbeddedResource Include="Images\+2g.png" />
+    <EmbeddedResource Include="Images\+2r.png" />
+    <EmbeddedResource Include="Images\+2y.png" />
+    <EmbeddedResource Include="Images\+4.png" />
+    <EmbeddedResource Include="Images\0b.png" />
+    <EmbeddedResource Include="Images\0g.png" />
+    <EmbeddedResource Include="Images\0r.png" />
+    <EmbeddedResource Include="Images\0y.png" />
+    <EmbeddedResource Include="Images\1b.png" />
+    <EmbeddedResource Include="Images\1g.png" />
+    <EmbeddedResource Include="Images\1r.png" />
+    <EmbeddedResource Include="Images\1y.png" />
+    <EmbeddedResource Include="Images\2b.png" />
+    <EmbeddedResource Include="Images\2g.png" />
+    <EmbeddedResource Include="Images\2r.png" />
+    <EmbeddedResource Include="Images\2y.png" />
+    <EmbeddedResource Include="Images\3b.png" />
+    <EmbeddedResource Include="Images\3g.png" />
+    <EmbeddedResource Include="Images\3r.png" />
+    <EmbeddedResource Include="Images\3y.png" />
+    <EmbeddedResource Include="Images\4b.png" />
+    <EmbeddedResource Include="Images\4g.png" />
+    <EmbeddedResource Include="Images\4r.png" />
+    <EmbeddedResource Include="Images\4y.png" />
+    <EmbeddedResource Include="Images\5b.png" />
+    <EmbeddedResource Include="Images\5g.png" />
+    <EmbeddedResource Include="Images\5r.png" />
+    <EmbeddedResource Include="Images\5y.png" />
+    <EmbeddedResource Include="Images\6b.png" />
+    <EmbeddedResource Include="Images\6g.png" />
+    <EmbeddedResource Include="Images\6r.png" />
+    <EmbeddedResource Include="Images\6y.png" />
+    <EmbeddedResource Include="Images\7b.png" />
+    <EmbeddedResource Include="Images\7g.png" />
+    <EmbeddedResource Include="Images\7r.png" />
+    <EmbeddedResource Include="Images\7y.png" />
+    <EmbeddedResource Include="Images\8b.png" />
+    <EmbeddedResource Include="Images\8g.png" />
+    <EmbeddedResource Include="Images\8r.png" />
+    <EmbeddedResource Include="Images\8y.png" />
+    <EmbeddedResource Include="Images\9b.png" />
+    <EmbeddedResource Include="Images\9g.png" />
+    <EmbeddedResource Include="Images\9r.png" />
+    <EmbeddedResource Include="Images\9y.png" />
+    <EmbeddedResource Include="Images\back.png" />
+    <EmbeddedResource Include="Images\revb.png" />
+    <EmbeddedResource Include="Images\revg.png" />
+    <EmbeddedResource Include="Images\revr.png" />
+    <EmbeddedResource Include="Images\revy.png" />
+    <EmbeddedResource Include="Images\skipb.png" />
+    <EmbeddedResource Include="Images\skipg.png" />
+    <EmbeddedResource Include="Images\skipr.png" />
+    <EmbeddedResource Include="Images\skipy.png" />
+    <EmbeddedResource Include="Images\wild.png" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

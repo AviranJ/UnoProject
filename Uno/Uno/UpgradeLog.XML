@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Uno">
+</Property><Property Name="Solution File" Value="C:\Users\Aviran\Desktop\Uno\Uno\Uno.sln">
+</Property><Property Name="Date" Value="יום רביעי 04 מרץ 2015">
+</Property><Property Name="Time" Value="11:42">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Uno.sln" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Uno.sln">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Uno.csproj" Description="Project file successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Uno.csproj">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Tools.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Tools.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Cards.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Cards.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmColorSelection.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmColorSelection.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Painter.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Painter.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Data.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Data.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Player.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Player.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmUserData.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmUserData.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Deck.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Deck.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="OpenDeck.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\OpenDeck.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Animate.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Animate.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmAbout.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmAbout.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmUno.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmUno.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Game.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Game.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Arguments.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Arguments.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="GameData.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\GameData.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Logic.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Logic.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Program.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="LoggingLevel.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\LoggingLevel.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Logger.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Logger.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="UnoCards.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\UnoCards.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="UnoColours.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\UnoColours.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Card.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Card.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Properties\Settings.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Properties\Settings.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Properties\Resources.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Properties\Resources.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmAbout.resx" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmAbout.resx">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmColorSelection.resx" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmColorSelection.resx">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmUno.resx" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmUno.resx">
+</Event><Event ErrorLevel="0" Project="Uno" Source="frmUserData.resx" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\frmUserData.resx">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\+2b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\+2b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\+2g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\+2g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\+2r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\+2r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\+2y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\+2y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\+4.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\+4.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\0b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\0b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\0g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\0g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\0r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\0r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\0y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\0y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\1b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\1b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\1g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\1g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\1r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\1r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\1y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\1y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\2b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\2b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\2g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\2g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\2r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\2r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\2y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\2y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\3b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\3b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\3g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\3g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\3r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\3r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\3y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\3y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\4b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\4b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\4g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\4g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\4r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\4r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\4y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\4y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\5b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\5b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\5g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\5g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\5r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\5r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\5y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\5y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\6b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\6b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\6g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\6g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\6r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\6r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\6y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\6y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\7b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\7b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\7g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\7g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\7r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\7r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\7y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\7y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\8b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\8b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\8g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\8g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\8r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\8r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\8y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\8y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\9b.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\9b.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\9g.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\9g.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\9r.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\9r.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\9y.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\9y.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\back.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\back.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\revb.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\revb.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\revg.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\revg.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\revr.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\revr.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\revy.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\revy.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\skipb.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\skipb.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\skipg.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\skipg.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\skipr.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\skipr.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\skipy.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\skipy.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Images\wild.png" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Images\wild.png">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Properties\Resources.resx" Description="File successfully backed up as C:\Users\Aviran\Desktop\Uno\Uno\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Uno.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Uno" Source="Uno.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Uno.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Uno.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Uno" Source="Uno.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

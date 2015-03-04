@@ -1,0 +1,20 @@
+
+----------------- Uno log starting -----------------
+
+04/03/2015 11:46:09 - LOG GENERAL - Entering frmUno.frmUno_Resize
+
+04/03/2015 11:46:09 - LOG GENERAL - Entering Tools.CalculateCardRegions
+
+04/03/2015 11:46:09 - LOG GENERAL - Exiting Tools.CalculateCardRegions
+
+04/03/2015 11:46:09 - LOG GENERAL - Exiting frmUno.frmUno_Resize
+
+04/03/2015 11:46:09 - LOG GENERAL - Entering GameData.InitData
+
+04/03/2015 11:46:09 - LOG GENERAL - Entering GameData.readConfig
+
+04/03/2015 11:46:09 - LOG GENERAL - The log level set is = 1
+
+04/03/2015 11:46:09 - LOG GENERAL - Exiting GameData.readConfig
+
+04/03/2015 11:46:09 - LOG GENERAL - Entering Card.Card

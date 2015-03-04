@@ -1,0 +1,11 @@
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.frmAbout.resources
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.frmColorSelection.resources
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.frmUno.resources
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.frmUserData.resources
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.Properties.Resources.resources
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.csproj.GenerateResource.Cache
+C:\Users\Aviran\Desktop\Uno\Uno\bin\Debug\Uno.exe
+C:\Users\Aviran\Desktop\Uno\Uno\bin\Debug\Uno.pdb
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.exe
+C:\Users\Aviran\Desktop\Uno\Uno\obj\Debug\Uno.pdb
