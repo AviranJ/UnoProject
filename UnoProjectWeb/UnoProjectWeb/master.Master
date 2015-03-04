@@ -4,23 +4,36 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>Login</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
 <form id="form1" runat="server" >
 <div id="DivPopup" class="PanelBorder" style="z-index:1;width:0px;height:0px;position:absolute;top:0px;left:0px;display:none;background-color:white;margin:0px;padding:0px;"><iframe id="PopupIframe" name="PopupIframe" frameborder="0" marginheight="0" marginwidth="0" style="width:100%;height:100%;margin:0px;padding:0px;" scrolling="no"></iframe></div>
-<table id="TableHeader" class="TableMasterHeader" cellpadding="0" cellspacing="0" border="0">
+<table id="TableHeader" class="TableMasterHeader" cellpadding="0" cellspacing="0" width="100%" border="0" style="background-color:#DDDDDD;">
 <tr>
     <td style="white-space:nowrap;text-align:left;">
         <table cellpadding="0" cellspacing="0" border="0" style="direction:ltr;">
         <tr>
-            <td style="width:450px;white-space:nowrap;"><img src="Images/Header.gif" class="imgLogo" align="middle" alt="" style="width:450px; "/></td>
+            <td style="width:400px;white-space:nowrap;"><img src="Images/Header.gif" class="imgLogo" align="middle" alt="" style="width:400px;"/></td>
             <td><div style="font-style:italic;color:blue;cursor:default;margin-top:24px;direction:ltr;"></div></td>
+            <td><div><asp:Label ID="LabelWelcome" runat="server" Text="Welcome to Uno Game" style=" font-size:30px;font-style:italic;color:blue;cursor:default;margin-top:24px;direction:ltr;"></asp:Label></div></td>
         </tr>
         </table>
-    </td>     
+    </td> 
+    
+    <td style="vertical-align:top;">
+        <table cellpadding="0" cellspacing="0" border="0" class="tableTimer" align="right" style=" font-style:italic;color:blue;cursor:default;margin-top:24px;direction:ltr;">
+        <tr>
+            <td><div id="divTimer"><%=DateTime.Now.ToLongDateString()%> </div></td>
+        </tr>
+        
+        <tr >
+            <td><div><asp:Label ID="LabelCredit" runat="server" Text="Created By ...."></asp:Label></div></td>
+        </tr>
+        </table>    
+    </td>   
 </tr>
 </table>
 

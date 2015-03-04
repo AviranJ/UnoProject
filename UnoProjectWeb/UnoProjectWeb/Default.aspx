@@ -8,19 +8,21 @@
 		<td colspan="2" style="height:20px;line-height:1px;font-size:1px;background-color: #f5f4ed;">&nbsp;</td>
 	</tr>
 	<tr style="background-color:#f5f4ed;">
-		<td style="padding:4px 20px 4px 20px;"><asp:Label ID="LabelUserName" Text="User" />: </td>
-		<td style="padding:4px 20px 4px 20px;"><asp:TextBox ID="TextBoxUserName" InputType="String" IsRequired="true" DisplayRequiredAsAsterix="true" TextBoxCssClass="AlignCenter" ValidationGroup="Login" ValidatorsPosition="Horizontal" AutoCompleteType="DisplayName" TextBoxMaxLength="20" /></td>
+		<td style="padding:4px 20px 4px 20px;"><asp:Label ID="LabelUserName" Text="User" runat="server" />: </td>
+		<td style="padding:4px 20px 4px 20px;"><asp:TextBox ID="TextBoxUserName" runat="server" ValidationGroup="Login" />
+		    <asp:requiredfieldvalidator id="RequiredFieldValidator1" controltovalidate="TextBoxUserName" validationgroup="Login" errormessage="Field is empty" runat="Server"></asp:requiredfieldvalidator></td>
 	</tr>
 	<tr style="background-color:#f5f4ed;">
-		<td style="padding:4px 20px 4px 20px;"><asp:Label ID="LabelPassword"  Value="Login_Password" />:</td>
-		<td style="padding:4px 20px 4px 20px;"><asp:TextBox ID="TextBoxPassword" ValidatorDisplay="Static" InputType="Password" IsRequired="true" DisplayRequiredAsAsterix="true" TextBoxCssClass="AlignCenter" ValidationGroup="Login" ValidatorsPosition="Horizontal" TextBoxMaxLength="20" /></td>
+		<td style="padding:4px 20px 4px 20px;"><asp:Label ID="LabelPassword"  Text="Password" runat="server"/>:</td>
+		<td style="padding:4px 20px 4px 20px;"><asp:TextBox ID="TextBoxPassword" TextMode="Password" runat="server" ValidationGroup="Login" />
+			<asp:requiredfieldvalidator id="RequiredFieldValidator2" controltovalidate="TextBoxPassword" validationgroup="Login" errormessage="Field is empty" runat="Server"></asp:requiredfieldvalidator></td>
 	</tr>
 	<tr style="background-color:#f5f4ed;text-align:center;">
 		<td style="padding:4px 20px 4px 20px;">
-		    <input type="reset" value="Reset" />
+		    <input type="reset" value="Sign up" />
 		</td>		
 		<td style="padding:4px 20px 4px 20px;">	            
-            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" />            
+            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login"/>            
          </td>
 	</tr>	
 </table>
