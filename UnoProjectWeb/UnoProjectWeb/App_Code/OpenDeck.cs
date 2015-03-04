@@ -9,8 +9,8 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
-using System.Collections;
 using UnoProjectWeb.enums;
+using System.Collections;
 
 namespace UnoProjectWeb.App_Code
 {
@@ -35,7 +35,7 @@ namespace UnoProjectWeb.App_Code
         public override void Clear()
         {
             base.Clear();
-            GameData.form.lblColorRunning.Text = "";
+            //GameData.form.lblColorRunning.Text = "";
         }
 
         public Cards GetCards()

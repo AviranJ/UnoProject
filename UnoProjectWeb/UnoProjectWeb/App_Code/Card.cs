@@ -17,7 +17,7 @@ using UnoProjectWeb.enums;
 namespace UnoProjectWeb.App_Code
 {
     
-    public class Card
+    internal class Card
     {
         public UnoCards number;
         public UnoColours color;

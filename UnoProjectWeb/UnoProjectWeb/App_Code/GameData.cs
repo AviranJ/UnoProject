@@ -72,24 +72,6 @@ namespace UnoProjectWeb.App_Code
             }
         }
 
-        private static void readConfig()
-        {
-            if (GameData.form.Args.Length > 0)
-            {
-                Arguments arguments = new Arguments(GameData.form.Args);
-                if (arguments["debug"] != null)
-                {
-                    int num = Convert.ToInt32(arguments["debug"]);
-                    Data.LogLevel = num < 1 || num > 3 ? 1 : num;
-                }
-                else
-                    Data.LogLevel = 1;
-            }
-            else
-                Data.LogLevel = 1;
-            Logger.Write(1, "The log level set is = " + (object)Data.LogLevel);
-            Logger.FuncExit("GameData.readConfig");
-        }
 
         private static void buildImageList()
         {

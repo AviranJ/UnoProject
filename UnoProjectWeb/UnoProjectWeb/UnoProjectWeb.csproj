@@ -58,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\Card.cs" />
+    <Content Include="App_Code\GameData.cs" />
+    <Content Include="App_Code\Player.cs" />
+    <Content Include="App_Code\Cards.cs" />
+    <Content Include="App_Code\Deck.cs" />
+    <Content Include="App_Code\ApplicationData.cs" />
+    <Content Include="App_Code\OpenDeck.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
