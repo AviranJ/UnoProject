@@ -17,7 +17,7 @@ namespace UnoProjectWeb.App_Code
     internal class ApplicationData
     {
         private static Timer timer = new Timer();
-        private static long start = 0L;
+        private static long start = 0L;;
 
         public static int GetPoint(Card card)
         {
