@@ -10,22 +10,20 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections;
+using UnoProjectWeb.enums;
 
 namespace UnoProjectWeb.App_Code
 {
-    public class Player
+    public class Game
     {
-        public ArrayList cards;
-        public String guID;
+        public Player p1, p2;
+        public String turn;
+        public ArrayList deck;
+        public Card lastCard;
 
-        public void AddCard(Card c)
-        {
-          
+        public Game() {
+        
         }
 
-        public void Clear()
-        {
-            
-        }
     }
 }

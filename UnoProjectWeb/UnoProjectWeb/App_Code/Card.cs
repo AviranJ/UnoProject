@@ -19,22 +19,23 @@ namespace UnoProjectWeb.App_Code
     
     internal class Card
     {
-        public UnoCards number;
-        public UnoColours color;
-        public int imageListOffset;
-        //public Image cardImage;
+        public int number;
+        public String color;
+        public String special;
 
-        public Card(UnoCards num, int off, UnoColours col)
+        public Card(String color, int number)
         {
-            this.number = num;
-            this.imageListOffset = off;
-            this.color = col;
-            //string name = "Uno.Images." + GameData.cardImageList[off];
+            this.color = color;
+            this.number = number;
+            special = null;
+        }
+        public Card(String special,String color)
+        {
+            this.special = special;
+            this.color = color;
+            number = 0;
         }
 
-        public override string ToString()
-        {
-            return (string)(object)this.number + (object)" of " + this.color.ToString();
-        }
+        // add, remove, clear functions
     }
 }

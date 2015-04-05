@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Data;
+using System.Collections;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -9,23 +10,14 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
-using System.Collections;
 
-namespace UnoProjectWeb.App_Code
+namespace UnoProjectWeb
 {
-    public class Player
+    public partial class master : System.Web.UI.MasterPage
     {
-        public ArrayList cards;
-        public String guID;
-
-        public void AddCard(Card c)
+        protected void Page_Load(object sender, EventArgs e)
         {
-          
-        }
 
-        public void Clear()
-        {
-            
         }
     }
 }

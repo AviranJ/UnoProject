@@ -9,23 +9,21 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
-using System.Collections;
 
 namespace UnoProjectWeb.App_Code
 {
-    public class Player
+    internal class Player
     {
-        public ArrayList cards;
-        public String guID;
+        public Cards cards = new Cards();
 
         public void AddCard(Card c)
         {
-          
+            this.cards.Add(c);
         }
 
         public void Clear()
         {
-            
+            this.cards.Clear();
         }
     }
 }
