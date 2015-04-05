@@ -23,6 +23,7 @@
 		    <asp:CustomValidator ID="CustomValidatorButtonSignUp" OnServerValidate="CustomValidatorButtonSignUp" />
 		</td>		
 		<td style="padding:4px 20px 4px 20px;">	            
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AConnectionString %>" SelectCommand="SELECT * FROM [USERS]"></asp:SqlDataSource>
             <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login" />            
          </td>
 	</tr>	

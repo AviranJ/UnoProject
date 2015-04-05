@@ -17,11 +17,11 @@ using UnoProjectWeb.enums;
 namespace UnoProjectWeb.App_Code
 {
     
-    internal class Card
+    public class Card
     {
         public int number;
-        public String color;
-        public String special;
+        public string color;
+        public string special;
 
         public Card(String color, int number)
         {
@@ -35,6 +35,43 @@ namespace UnoProjectWeb.App_Code
             this.color = color;
             number = 0;
         }
+
+        public int Number
+        {
+            get
+            {
+                return number;
+            }
+            set
+            {
+                number = value;
+            }
+        }
+
+        public string Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                color = value;
+            }
+        }
+
+        public string Special
+        {
+            get
+            {
+                return special;
+            }
+            set
+            {
+                special = value;
+            }
+        }
+
 
         // add, remove, clear functions
     }

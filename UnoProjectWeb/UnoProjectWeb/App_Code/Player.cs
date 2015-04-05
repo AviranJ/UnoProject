@@ -18,14 +18,36 @@ namespace UnoProjectWeb.App_Code
         public ArrayList cards;
         public String guID;
 
+        public Player(ArrayList cards)
+        {
+            this.cards = cards;
+        }
+
         public void AddCard(Card c)
         {
-          
+            cards.Add(c);
         }
 
         public void Clear()
         {
-            
+            cards.Clear();
+        }
+
+        public void Remove()
+        {
+           
+        }
+
+        public string GUID
+        {
+            get
+            {
+                return guID;
+            }
+            set
+            {
+                guID = value;
+            }
         }
     }
 }
