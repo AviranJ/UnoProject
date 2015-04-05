@@ -33,9 +33,15 @@ namespace UnoProjectWeb.App_Code
             cards.Clear();
         }
 
-        public void Remove()
+        public void Remove(Card card)
         {
-           
+           foreach (Card c in cards)
+            {
+                if (c.Color == card.Color && c.Number == card.Number && c.special == card.Special)
+                {
+                    cards.Remove(c);
+                }
+           }
         }
 
         public string GUID

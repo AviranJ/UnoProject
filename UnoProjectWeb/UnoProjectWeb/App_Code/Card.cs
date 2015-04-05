@@ -36,6 +36,14 @@ namespace UnoProjectWeb.App_Code
             number = 0;
         }
 
+        public bool isSpecial
+        {
+            get
+            {
+                return special != null;
+            }
+        }
+
         public int Number
         {
             get
