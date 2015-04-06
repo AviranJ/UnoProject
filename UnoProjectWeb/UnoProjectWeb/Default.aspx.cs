@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.Data.SqlClient;
 
 namespace UnoProjectWeb
 {
@@ -21,11 +22,53 @@ namespace UnoProjectWeb
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
         {
+            string login = TextBoxUserName.Text;
+            string password = TextBoxPassword.Text;
+
+            string strSql = @"
+                               SELECT * FROM USERS U WHERE U.LOGIN = @LOGIN AND PASSWORD=@PASSWORD";
+            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
+            if (dt.Rows.Count > 0)
+            {
+                Response.Redirect("Welcome.aspx");
+            }
+
+        
         }
 
-        protected void CustomValidatorButtonSignUp(object sender, EventArgs e)
+        protected void ButtonSignup_Click(object sender, EventArgs e)
         {
+            string login = TextBoxUserName.Text;
+            string password = TextBoxPassword.Text;
+
+            string cmdText = @"
+				        INSERT INTO USERS
+					        (LOGIN,PASSWORD)
+				        VALUES (@LOGIN, @PASSWORD) ";
+             int sign = DB.ExecuteNonQuery(cmdText, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
+             if (sign > 0)
+             {
+                 Response.Redirect("Welcome.aspx");
+             }
+
 
         }
+
+        protected void CustomValidatorButtonSignUp(object source, ServerValidateEventArgs args)
+        {
+            string login = TextBoxUserName.Text;
+
+            string strSql = @"
+                               SELECT * FROM USERS U WHERE U.LOGIN = @LOGIN";
+            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@LOGIN", login) });
+
+            if (dt.Rows.Count > 0)
+            {
+                args.IsValid = false;
+            }
+            else args.IsValid = true;
+        }
+
+
     }
 }

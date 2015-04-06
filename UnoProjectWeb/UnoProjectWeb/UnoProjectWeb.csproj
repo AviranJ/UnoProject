@@ -66,12 +66,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="JavaScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\Card.cs" />
     <Content Include="App_Code\Player.cs" />
     <Content Include="App_Code\Game.cs" />
+    <Content Include="App_Code\AsyncResult.cs" />
+    <Content Include="App_Code\AsyncServer.cs" />
+    <Content Include="App_Code\Fraction.cs" />
+    <Compile Include="DB.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -103,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Handler.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

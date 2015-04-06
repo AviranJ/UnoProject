@@ -19,12 +19,13 @@
 	</tr>
 	<tr style="background-color:#f5f4ed;text-align:center;">
 		<td style="padding:4px 20px 4px 20px;">
-		    <asp:Button ID="ButtonSignUp" UseSubmitBehavior="true" Text="Sign up" runat="server" ValidationGroup="Login"/> 
-		    <asp:CustomValidator ID="CustomValidatorButtonSignUp" OnServerValidate="CustomValidatorButtonSignUp" />
+		    <asp:Button ID="ButtonSignUp" UseSubmitBehavior="true" Text="Sign up" runat="server" ValidationGroup="Signup" OnClick="ButtonSignup_Click"/> 
+            <asp:CustomValidator ID="CustomValidatorSignUp" runat="server" OnServerValidate="CustomValidatorButtonSignUp" ValidationGroup="Signup" ErrorMessage="User already exist"/>
+
 		</td>		
 		<td style="padding:4px 20px 4px 20px;">	            
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AConnectionString %>" SelectCommand="SELECT * FROM [USERS]"></asp:SqlDataSource>
-            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login" />            
+            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login" OnClick="ButtonLogin_Click" />            
          </td>
 	</tr>	
 </table>
