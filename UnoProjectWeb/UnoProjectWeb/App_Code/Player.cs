@@ -34,15 +34,16 @@ namespace UnoProjectWeb.App_Code
             cards.Clear();
         }
 
-        public void Remove(Card card)
+        public void Remove(int number , string color)
         {
-           foreach (Card c in cards)
+            for (int i = 0; i < cards.Count;i++ )
             {
-                if (c.Color == card.Color && c.Number == card.Number && c.special == card.Special)
+                Card card = (Card)cards[i];
+                if (card.Color == color && card.Number == number)
                 {
-                    cards.Remove(c);
+                    cards.Remove(cards[i]);
                 }
-           }
+            }
         }
 
         public string GUID

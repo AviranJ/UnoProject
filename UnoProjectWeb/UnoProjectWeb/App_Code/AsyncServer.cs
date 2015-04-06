@@ -21,11 +21,11 @@ namespace UnoProjectWeb.App_Code
         public static void Load(AsyncResult state,string guid)
         {
             lock (_lock)
-            {
-                deck = new ArrayList();
+            { 
+                Random r = new Random();
                 if (arrFraction[0] == null)
                 {
-                    Random r = new Random();
+                    deck = new ArrayList();
 
                     for (int i = 1; i <= 9; i++)
                     {
@@ -66,10 +66,9 @@ namespace UnoProjectWeb.App_Code
                     turn = p1.GUID;
                     arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard);
                     arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard);
-
-                    Update(state, guid);
                     
                 }
+                Update(state, guid);
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
                 string resultStr = myJavaScriptSerializer.Serialize(arrFraction);
                 state._context.Response.Write(resultStr);
@@ -98,6 +97,60 @@ namespace UnoProjectWeb.App_Code
             }
         }
 
+        public static void Move(AsyncResult state, string guid, string id)
+        {
+            JavaScriptSerializer myJavaScriptSerializer;
+            string resultStr;
+            int number = Int32.Parse(id.Split(':')[0]);
+            string color = id.Split(':')[1];
+            
+            if (guid == p1.GUID)
+            {
+                p1.Remove(number, color);
+            }
+            else
+            {
+                p2.Remove(number, color);
+            }
+            lastCard = new Card(color,number);
+            arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard);
+            arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard);
+
+            Update(state, guid);
+
+            myJavaScriptSerializer = new JavaScriptSerializer();
+            resultStr = myJavaScriptSerializer.Serialize(arrFraction);
+            state._context.Response.Write(resultStr);
+
+        }
+
+        public static void AddCard(AsyncResult state, string guid)
+        {
+            int numOfCards = deck.Count;
+            Random r = new Random();
+            int random = r.Next(numOfCards);
+
+            
+            if (guid == p1.GUID)
+            {
+                p1.AddCard((Card)deck[random]);
+            }
+            else
+            {
+                p2.AddCard((Card)deck[random]);
+            }
+            deck.Remove(deck[random]);
+            arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard);
+            arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard);
+
+            Update(state, guid);
+
+            JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
+            string resultStr = myJavaScriptSerializer.Serialize(arrFraction);
+            state._context.Response.Write(resultStr);
+
+        }
+
 
         public static void RegisterClient(AsyncResult state)
         {
@@ -106,8 +159,6 @@ namespace UnoProjectWeb.App_Code
                 state.ClientGuid = Guid.NewGuid().ToString();
                 _clientStateList.Add(state);
                 state._context.Response.Write(state.ClientGuid.ToString());
-
-
             }
         }
 

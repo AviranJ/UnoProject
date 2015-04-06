@@ -65,8 +65,8 @@ function onLoadJavaScript() {
 
 function getResponse_Connect() {
     if (xmlHttp_OneTime.readyState == 4) {
-        load();
         GuID = xmlHttp_OneTime.responseText;
+        load();
         ProcessFunction();
 
     }
@@ -114,6 +114,8 @@ function Init() {
             myButton.style.left = left + '%';
             myButton.value = number;
             myButton.style.backgroundColor = color;
+            myButton.id = number.toString() + ":" + color.toString();
+            myButton.onclick = function () { myClick(this); };
             body.appendChild(myButton);
             left += 5;
         }
@@ -182,6 +184,8 @@ function Init() {
             myButton.style.left = left + '%';
             myButton.value = number;
             myButton.style.backgroundColor = color;
+            myButton.id = number.toString() + ":" + color.toString();
+            myButton.onclick = function () { myClick(this); };
             body.appendChild(myButton);
             left += 5;
         }
@@ -214,6 +218,7 @@ function Init() {
         myButton.style.left = '400px';
         myButton.style.backgroundSize = 'cover';
         myButton.style.backgroundImage = 'url(Images/back.png)';
+        myButton.onclick = function () { AddCard(this); };
         body.appendChild(myButton);
 
 
@@ -227,6 +232,7 @@ function Init() {
         myButton.style.position = 'absolute';
         myButton.style.top = '350px';
         myButton.style.left = '45%';
+        myButton.id='lastcard';
         myButton.value = number;
         myButton.style.backgroundColor = color;
         body.appendChild(myButton);
@@ -236,11 +242,27 @@ function Init() {
 }
 
 function myClick(myButton) {
+    var lastCard = document.getElementById("lastcard");
+    if (lastCard.value == myButton.value || lastCard.style.backgroundColor == myButton.style.backgroundColor)
+    {
+        var url = "Handler.ashx?cmd=move&guid=" + GuID + "&ID=" + myButton.id;
+        xmlHttp.open("POST", url, true);
+        xmlHttp.onreadystatechange = load2;
+        xmlHttp.send();
+        var input = forms[i].getElementsByTagName('input');
+        for (var y = 0; y < input.length; y++) {
+            if (input[y].type == 'submit') {
+                input[y].disabled = 'disabled';
+            }
+        }
+    }
+}
 
-    var url = "Handler.ashx?cmd=Move&guid=" + GuID + "&ID=" + myButton.id;
+function AddCard(myButton) {
+    var url = "Handler.ashx?cmd=addCard&guid=" + GuID;
     xmlHttp.open("POST", url, true);
+    xmlHttp.onreadystatechange = load2;
     xmlHttp.send();
-
 }
 
 function movebutton(a, b) {

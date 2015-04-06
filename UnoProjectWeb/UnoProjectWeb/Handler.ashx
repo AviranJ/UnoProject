@@ -31,7 +31,13 @@
                     AsyncServer.Load(myAsyncResult, guid);
                     myAsyncResult.CompleteRequest();
                     break;
-                case "Move":
+                case "move":
+                    string ID = myAsyncResult._context.Request.QueryString["ID"];
+                    AsyncServer.Move(myAsyncResult, guid, ID);
+                    myAsyncResult.CompleteRequest();
+                    break;
+                case "addCard":
+                    AsyncServer.AddCard(myAsyncResult, guid);
                     myAsyncResult.CompleteRequest();
                     break;
                 case "register":
