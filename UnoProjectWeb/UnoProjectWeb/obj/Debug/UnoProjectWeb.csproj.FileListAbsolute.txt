@@ -1,7 +1,3 @@
-C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.dll
-C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.pdb
-C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.dll
-C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.pdb
 C:\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.dll.config
 C:\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.dll
 C:\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.pdb
@@ -9,4 +5,7 @@ C:\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.csprojResolveA
 C:\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.dll
 C:\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.pdb
 C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.dll.config
-C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.csprojResolveAssemblyReference.cache
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.dll
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\bin\UnoProjectWeb.pdb
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.dll
+C:\Users\Aviran\Documents\GitHub\UnoProject\UnoProjectWeb\UnoProjectWeb\obj\Debug\UnoProjectWeb.pdb

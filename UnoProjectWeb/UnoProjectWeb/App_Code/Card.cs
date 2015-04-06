@@ -16,7 +16,7 @@ using UnoProjectWeb.enums;
 
 namespace UnoProjectWeb.App_Code
 {
-    
+    [Serializable]
     public class Card
     {
         public int number;

@@ -63,5 +63,21 @@ namespace UnoProjectWeb.App_Code
             turn = p1.GUID;
         }
 
+        public Player Player1
+        {
+            get
+            {
+                return p1;
+            }
+        }
+
+        public Player Player2
+        {
+            get
+            {
+                return p2;
+            }
+        }
+
     }
 }

@@ -30,7 +30,7 @@ namespace UnoProjectWeb
             DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
             if (dt.Rows.Count > 0)
             {
-                Response.Redirect("Welcome.aspx");
+                Response.Redirect("Play.aspx");
             }
             else
             {
@@ -54,7 +54,7 @@ namespace UnoProjectWeb
                 int sign = DB.ExecuteNonQuery(cmdText, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
                 if (sign > 0)
                 {
-                    Response.Redirect("Welcome.aspx");
+                    Response.Redirect("Play.aspx");
                 }
             }
 

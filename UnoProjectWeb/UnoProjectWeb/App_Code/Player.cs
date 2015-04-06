@@ -13,6 +13,7 @@ using System.Collections;
 
 namespace UnoProjectWeb.App_Code
 {
+    [Serializable]
     public class Player
     {
         public ArrayList cards;
@@ -53,6 +54,22 @@ namespace UnoProjectWeb.App_Code
             set
             {
                 guID = value;
+            }
+        }
+
+        public ArrayList Cards
+        {
+            get
+            {
+                return cards;
+            }
+        }
+
+        public int NumberOfCards
+        {
+            get
+            {
+                return cards.Count;
             }
         }
     }
