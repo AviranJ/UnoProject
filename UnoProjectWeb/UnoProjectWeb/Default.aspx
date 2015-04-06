@@ -10,12 +10,14 @@
 	<tr style="background-color:#f5f4ed;">
 		<td style="padding:4px 20px 4px 20px;"><asp:Label ID="LabelUserName" Text="User" runat="server" />: </td>
 		<td style="padding:4px 20px 4px 20px;"><asp:TextBox ID="TextBoxUserName" runat="server" ValidationGroup="Login" />
-		    <asp:requiredfieldvalidator id="RequiredFieldValidator1" controltovalidate="TextBoxUserName" validationgroup="Login" errormessage="Field is empty" runat="Server"></asp:requiredfieldvalidator></td>
+		    <asp:requiredfieldvalidator runat="server" id="RequiredFieldValidator1" controltovalidate="TextBoxUserName" validationgroup="Login" errormessage="Field is empty" runat="Server"></asp:requiredfieldvalidator>
+		</td>
 	</tr>
 	<tr style="background-color:#f5f4ed;">
 		<td style="padding:4px 20px 4px 20px;"><asp:Label ID="LabelPassword"  Text="Password" runat="server"/>:</td>
 		<td style="padding:4px 20px 4px 20px;"><asp:TextBox ID="TextBoxPassword" TextMode="Password" runat="server" ValidationGroup="Login" />
-			<asp:requiredfieldvalidator id="RequiredFieldValidator2" controltovalidate="TextBoxPassword" validationgroup="Login" errormessage="Field is empty" runat="Server"></asp:requiredfieldvalidator></td>
+			<asp:requiredfieldvalidator runat="server" id="RequiredFieldValidator2" controltovalidate="TextBoxPassword" validationgroup="Login" errormessage="Field is empty" runat="Server"></asp:requiredfieldvalidator>
+		</td>
 	</tr>
 	<tr style="background-color:#f5f4ed;text-align:center;">
 		<td style="padding:4px 20px 4px 20px;">
@@ -25,7 +27,8 @@
 		</td>		
 		<td style="padding:4px 20px 4px 20px;">	            
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AConnectionString %>" SelectCommand="SELECT * FROM [USERS]"></asp:SqlDataSource>
-            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login" OnClick="ButtonLogin_Click" />            
+            <asp:Button ID="ButtonLogin" UseSubmitBehavior="true" Text="Login" runat="server" ValidationGroup="Login" OnClick="ButtonLogin_Click" /> 
+            <asp:CustomValidator ID="CustomValidatorLogin" runat="server" OnServerValidate="CustomValidatorButtonLogin" validationgroup="Login"  ErrorMessage="Wrong user or password"/>           
          </td>
 	</tr>	
 </table>

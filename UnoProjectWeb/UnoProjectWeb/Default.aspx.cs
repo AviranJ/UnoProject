@@ -32,41 +32,83 @@ namespace UnoProjectWeb
             {
                 Response.Redirect("Welcome.aspx");
             }
+            else
+            {
+            }
 
         
         }
 
         protected void ButtonSignup_Click(object sender, EventArgs e)
         {
-            string login = TextBoxUserName.Text;
-            string password = TextBoxPassword.Text;
+            Page.Validate("Signup");
+            if (Page.IsValid)
+            {
+                string login = TextBoxUserName.Text;
+                string password = TextBoxPassword.Text;
 
-            string cmdText = @"
+                string cmdText = @"
 				        INSERT INTO USERS
 					        (LOGIN,PASSWORD)
 				        VALUES (@LOGIN, @PASSWORD) ";
-             int sign = DB.ExecuteNonQuery(cmdText, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
-             if (sign > 0)
-             {
-                 Response.Redirect("Welcome.aspx");
-             }
+                int sign = DB.ExecuteNonQuery(cmdText, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
+                if (sign > 0)
+                {
+                    Response.Redirect("Welcome.aspx");
+                }
+            }
 
 
         }
 
-        protected void CustomValidatorButtonSignUp(object source, ServerValidateEventArgs args)
+        protected void CustomValidatorButtonLogin(object source, ServerValidateEventArgs args)
         {
             string login = TextBoxUserName.Text;
+            string password = TextBoxPassword.Text;
 
             string strSql = @"
-                               SELECT * FROM USERS U WHERE U.LOGIN = @LOGIN";
-            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@LOGIN", login) });
-
+                               SELECT * FROM USERS U WHERE U.LOGIN = @LOGIN AND PASSWORD=@PASSWORD";
+            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@LOGIN", login), new SqlParameter("@PASSWORD", password) });
             if (dt.Rows.Count > 0)
+            {
+                args.IsValid = true;
+            }
+            else
             {
                 args.IsValid = false;
             }
-            else args.IsValid = true;
+
+        }
+        protected void CustomValidatorButtonSignUp(object source, ServerValidateEventArgs args)
+        
+        {
+            RequiredFieldValidator1.IsValid = false;
+            
+            string login = TextBoxUserName.Text;
+            if (login.Equals(""))
+                RequiredFieldValidator1.IsValid = false;
+            else
+                RequiredFieldValidator1.IsValid = true;
+
+            string password = TextBoxPassword.Text;
+            if (password.Equals(""))
+                RequiredFieldValidator2.IsValid = false;
+            else
+                RequiredFieldValidator2.IsValid = true;
+
+            if (!login.Equals("") && !password.Equals(""))
+            {
+                string strSql = @"
+                               SELECT * FROM USERS U WHERE U.LOGIN = @LOGIN";
+                DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@LOGIN", login) });
+
+                if (dt.Rows.Count > 0)
+                {
+                    args.IsValid = false;
+                }
+                else args.IsValid = true;
+            }
+
         }
 
 
