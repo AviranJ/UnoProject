@@ -416,7 +416,9 @@ function AddCard(myButton) {
             xmlHttp.open("POST", url, true);
             xmlHttp.onreadystatechange = load2;
             xmlHttp.send();
+            packOfCards.className = "";
         }, 1050);
+       
         
 
     }
