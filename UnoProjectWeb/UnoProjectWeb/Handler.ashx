@@ -28,7 +28,9 @@
             switch (command)
             {
                 case "load":
-                    AsyncServer.Load(myAsyncResult, guid);
+                    string endgame = myAsyncResult._context.Request.QueryString["endgame"];
+                    bool end = endgame == "true" ? true : false;
+                    AsyncServer.Load(myAsyncResult, guid, end);
                     myAsyncResult.CompleteRequest();
                     break;
                 case "move":

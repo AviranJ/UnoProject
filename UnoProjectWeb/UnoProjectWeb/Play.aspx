@@ -12,9 +12,9 @@
     <div id="opponent" style="width:100%; text-align:center; padding-top:4em; padding-bottom:10em">
         
         </div>
-
+    <asp:Label Text="Please wait for another player to join" ID="labelWelcome" runat="server" style="width:100%; text-align:center; font-size:xx-large ; color:red"/>
     <div id="middlecards" style="width:100%; text-align:center;">
-            <asp:Label Text="Please wait for another player to join" ID="labelWelcome" runat="server" style="width:100%; text-align:center; font-size:xx-large ; color:red"/>
+            
         </div>
 
     <div id="cards" style="width:100%; text-align:center;padding-top:10em; padding-bottom:4em">

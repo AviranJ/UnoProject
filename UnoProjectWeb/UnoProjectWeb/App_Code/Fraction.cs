@@ -26,16 +26,18 @@ namespace UnoProjectWeb.App_Code
         public string turn;
         public int numOfCards;
         public int oponnentCards;
+        public int packOfCards;
         public Card lastCard;
         public string clientGuid;
 
-        public Fraction(ArrayList cards, string turn, int oponnentCards, Card lastCard)
+        public Fraction(ArrayList cards, string turn, int oponnentCards, Card lastCard, int packOfCards)
         {
             this.cards = cards;
             this.turn = turn;
             this.numOfCards=cards.Count;
             this.oponnentCards = oponnentCards;
             this.lastCard = lastCard;
+            this.packOfCards = packOfCards;
         }
 
         public string ClientGuid
