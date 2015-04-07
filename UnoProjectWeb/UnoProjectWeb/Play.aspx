@@ -8,7 +8,7 @@
     <title></title> 
 </head>
 <body>
-    <asp:Label Text="." ID="label1" runat="server" style="width:100%; text-align:center; font-size:xx-large ; color:red"/>
+    <asp:Label Text="" ID="label1" runat="server" style="width:100%; text-align:center; font-size:xx-large ; color:red"/>
     <div id="opponent" style="width:100%; text-align:center; padding-top:4em; padding-bottom:10em">
         
         </div>

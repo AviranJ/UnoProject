@@ -108,6 +108,7 @@ function Init() {
 
     if (myJSON_Object[0].clientGuid == GuID)
     {
+        
         document.getElementById('ctl00_ContentPlaceHolder1_labelWelcome').style.visibility = 'hidden';
         turn = myJSON_Object[0].turn.toString();
 
@@ -118,6 +119,45 @@ function Init() {
 
         var numOfCards = myJSON_Object[0].numOfCards.toString();
         var opponentCards = myJSON_Object[0].oponnentCards.toString();
+        var packOfCards = myJSON_Object[0].packOfCards.toString();
+
+        if (numOfCards == 0 || opponentCards == 0 || packOfCards==0)
+        {
+            if (packOfCards == 0)
+            {
+                if (numOfCards >= opponentCards)
+                    window.alert("You won");
+                else
+                    window.alert("You lost");
+            }
+            else if (numOfCards==0)
+                window.alert("You won");
+            else
+                window.alert("You lost");
+
+            var myNode = document.getElementById("opponent");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var myNode = document.getElementById("cards");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var myNode = document.getElementById("middlecards");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
+            Endgame = false;
+            xmlHttp.open("POST", url, true);
+            xmlHttp.onreadystatechange = load2;
+            xmlHttp.send();
+            return;
+        }
+
         var left = 25;
         var j = 0;
         for (var i = 0; i < numOfCards; i++,j++) {
@@ -152,8 +192,7 @@ function Init() {
         }
         
     }
-    else
-    {
+    else if (myJSON_Object[1].clientGuid == GuID) {
         document.getElementById('ctl00_ContentPlaceHolder1_labelWelcome').style.visibility = 'hidden';
         turn = myJSON_Object[1].turn.toString();
 
@@ -165,14 +204,50 @@ function Init() {
 
         var numOfCards = myJSON_Object[1].numOfCards.toString();
         var opponentCards = myJSON_Object[1].oponnentCards.toString();
+
+
+        if (numOfCards == 0 || opponentCards == 0 || packOfCards == 0) {
+            if (packOfCards == 0) {
+                if (numOfCards >= opponentCards)
+                    window.alert("You won");
+                else
+                    window.alert("You lost");
+            }
+            else if (numOfCards == 0)
+                window.alert("You won");
+            else
+                window.alert("You lost");
+
+            var myNode = document.getElementById("opponent");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var myNode = document.getElementById("cards");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var myNode = document.getElementById("middlecards");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
+            Endgame = false;
+            xmlHttp.open("POST", url, true);
+            xmlHttp.onreadystatechange = load2;
+            xmlHttp.send();
+            return;
+        }
+
         var j = 0;
         for (var i = 0; i < numOfCards; i++, j++) {
 
             var number = myJSON_Object[1].cards[i].number;
             var color = myJSON_Object[1].cards[i].color;
 
-            if (document.getElementById(number.toString() + ":" + color.toString()) == null)
-            {
+            if (document.getElementById(number.toString() + ":" + color.toString()) == null) {
                 var myButton = document.createElement('input');
 
                 myButton.type = 'button';
@@ -201,21 +276,83 @@ function Init() {
 
 
     }
+    else {
+        var myNode = document.getElementById("opponent");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+
+        var myNode = document.getElementById("cards");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+
+        var myNode = document.getElementById("middlecards");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+        document.getElementById('ctl00_ContentPlaceHolder1_labelWelcome').style.visibility = 'hidden';
+        turn = myJSON_Object[1].turn.toString();
+        document.getElementById('ctl00_ContentPlaceHolder1_label1').innerHTML = 'View mode';
+
+        var numOfCards = myJSON_Object[1].numOfCards.toString();
+        var j = 0;
+        for (var i = 0; i < numOfCards; i++, j++) {
+
+            var number = myJSON_Object[1].cards[i].number;
+            var color = myJSON_Object[1].cards[i].color;
+
+            if (document.getElementById(number.toString() + ":" + color.toString()) == null) {
+                var myButton = document.createElement('input');
+
+                myButton.type = 'button';
+                myButton.style.width = '90px';
+                myButton.style.height = '120px ';
+                myButton.style.fontSize = 'XX-Large';
+                myButton.value = number;
+                myButton.style.backgroundColor = color;
+                myButton.id = number.toString() + ":" + color.toString();
+                myButton.onclick = function () { myClick(this); };
+                cards.appendChild(myButton);
+            }
+
+        }
+        numOfCards = myJSON_Object[0].numOfCards.toString();
+        for (var i = 0; i < numOfCards; i++) {
+
+            var number = myJSON_Object[0].cards[i].number;
+            var color = myJSON_Object[0].cards[i].color;
+            if (document.getElementById(number.toString() + ":" + color.toString()) == null) {
+                var myButton = document.createElement('input');
+                myButton.type = 'button';
+                myButton.style.width = '90px';
+                myButton.style.height = '120px ';
+                myButton.style.fontSize = 'XX-Large';
+                myButton.value = number;
+                myButton.style.backgroundColor = color;
+                myButton.id = number.toString() + ":" + color.toString();
+                myButton.onclick = function () { myClick(this); };
+                opponent.appendChild(myButton);
+            }
+        }
+    }
    
 
-    var deckCards = document.getElementById('deckCards');
-    if (deckCards == null)
+    var packOfCards = document.getElementById('packOfCards');
+    if (packOfCards == null)
     {
-        deckCards = document.createElement('input');
-        deckCards.type = 'button';
-        deckCards.style.width = '90px';
-        deckCards.style.height = '120px ';
-        deckCards.style.fontSize = 'XX-Large';
-        deckCards.style.backgroundSize = 'cover';
-        deckCards.style.backgroundImage = 'url(Images/back.png)';
-        deckCards.id = 'deckCards';
-        deckCards.onclick = function () { AddCard(this); };
-        middlecards.appendChild(deckCards);
+        packOfCards = document.createElement('input');
+        packOfCards.type = 'button';
+        packOfCards.style.width = '90px';
+        packOfCards.style.height = '120px ';
+        packOfCards.style.fontSize = 'XX-Large';
+        packOfCards.style.backgroundSize = 'cover';
+        packOfCards.style.position = 'absolute';
+        packOfCards.style.left = '400px';
+        packOfCards.style.backgroundImage = 'url(Images/back.png)';
+        packOfCards.id = 'packOfCards';
+        packOfCards.onclick = function () { AddCard(this); };
+        middlecards.appendChild(packOfCards);
     }
 
         
@@ -230,6 +367,7 @@ function Init() {
             lastCard.style.width = '90px';
             lastCard.style.height = '120px ';
             lastCard.style.fontSize = 'XX-Large';
+            lastCard.style.padding = '5px';
             lastCard.id = 'lastcard';
             middlecards.appendChild(lastCard);
         }

@@ -18,12 +18,12 @@ namespace UnoProjectWeb.App_Code
 
         private static Fraction[] arrFraction = new Fraction[2];
 
-        public static void Load(AsyncResult state,string guid)
+        public static void Load(AsyncResult state,string guid,bool endGame)
         {
             lock (_lock)
             { 
                 Random r = new Random();
-                if (arrFraction[0] == null && _clientStateList.Count>=2)
+                if ((arrFraction[0] == null && _clientStateList.Count >= 2) || endGame)
                 {
                     deck = new ArrayList();
 
@@ -50,7 +50,7 @@ namespace UnoProjectWeb.App_Code
                         deck.Remove(deck[random1]);
 
                         int random2 = r.Next(numOfCards - 1);
-                        Card c2 = (Card)deck[r.Next(numOfCards - 1)];
+                        Card c2 = (Card)deck[random2];
                         p2Cards.Add(c2);
                         deck.Remove(deck[random2]);
 
@@ -67,8 +67,8 @@ namespace UnoProjectWeb.App_Code
                     p2.guID = _clientStateList[1].ClientGuid;
 
                     turn = p1.GUID;
-                    arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard);
-                    arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard);
+                    arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard, deck.Count);
+                    arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard, deck.Count);
 
                     Update(state, guid);
 
@@ -128,8 +128,8 @@ namespace UnoProjectWeb.App_Code
             turn = turn == p1.guID ? p2.guID : p1.guID;
 
             lastCard = new Card(color,number);
-            arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard);
-            arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard);
+            arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard,deck.Count);
+            arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard, deck.Count);
 
             Update(state, guid);
 
@@ -138,24 +138,28 @@ namespace UnoProjectWeb.App_Code
         public static void AddCard(AsyncResult state, string guid)
         {
             int numOfCards = deck.Count;
-            Random r = new Random();
-            int random = r.Next(numOfCards);
+            if (numOfCards > 0)
+            {
+                Random r = new Random();
+                int random = r.Next(numOfCards);
 
 
-            if (guid == p1.guID)
-            {
-                p1.AddCard((Card)deck[random]);
+                if (guid == p1.guID)
+                {
+                    p1.AddCard((Card)deck[random]);
+                }
+                else
+                {
+                    p2.AddCard((Card)deck[random]);
+                }
+                deck.Remove(deck[random]);
             }
-            else
-            {
-                p2.AddCard((Card)deck[random]);
-            }
-            deck.Remove(deck[random]);
+
 
             turn = turn == p1.guID ? p2.guID : p1.guID;
 
-            arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard);
-            arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard);
+            arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard, deck.Count);
+            arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard, deck.Count);
 
             Update(state, guid);
 
