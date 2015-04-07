@@ -7,6 +7,8 @@ var GuID;
 var xmlHttp_OneTime;
 var xmlHttp_Process;
 
+var turn;
+
 var Endgame = false;
 
 function load() {
@@ -95,178 +97,177 @@ function getResponse_Process() {
 }
 
 function Init() {
+
+
+    var myNode = document.getElementById("opponent");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+
+
+
     if (myJSON_Object[0].clientGuid == GuID)
     {
+        document.getElementById('ctl00_ContentPlaceHolder1_labelWelcome').style.visibility = 'hidden';
+        turn = myJSON_Object[0].turn.toString();
+
+        if (turn == GuID)
+            document.getElementById('ctl00_ContentPlaceHolder1_label1').innerHTML = 'My turn';
+        else
+            document.getElementById('ctl00_ContentPlaceHolder1_label1').innerHTML = 'His turn';
+
         var numOfCards = myJSON_Object[0].numOfCards.toString();
-        var opponentCards = myJSON_Object[0].numOfCards.toString();
+        var opponentCards = myJSON_Object[0].oponnentCards.toString();
         var left = 25;
-        for (var i = 0; i < numOfCards; i++) {
+        var j = 0;
+        for (var i = 0; i < numOfCards; i++,j++) {
 
             var number = myJSON_Object[0].cards[i].number;
             var color = myJSON_Object[0].cards[i].color;
-            var myButton = document.createElement('input');
-            myButton.type = 'button';
-            myButton.style.width = '90px';
-            myButton.style.height = '120px ';
-            myButton.style.fontSize = 'XX-Large';
-            myButton.style.position = 'absolute';
-            myButton.style.top = '600px';
-            myButton.style.left = left + '%';
-            myButton.value = number;
-            myButton.style.backgroundColor = color;
-            myButton.id = number.toString() + ":" + color.toString();
-            myButton.onclick = function () { myClick(this); };
-            body.appendChild(myButton);
-            left += 5;
+            if (document.getElementById(number.toString() + ":" + color.toString()) == null)
+            {
+                var myButton = document.createElement('input');
+                myButton.type = 'button';
+                myButton.style.width = '90px';
+                myButton.style.height = '120px ';
+                myButton.style.fontSize = 'XX-Large';
+                myButton.value = number;
+                myButton.style.backgroundColor = color;
+                myButton.id = number.toString() + ":" + color.toString();
+                myButton.onclick = function () { myClick(this); };
+                cards.appendChild(myButton);
+                left += 5;
+            }
         }
         left = 25;
-        for (var i = 0; i < opponentCards; i++) {
-
-            var number = myJSON_Object[0].cards[i].number;
-            var color = myJSON_Object[0].cards[i].color;
+        for (var i = 0; i < opponentCards; i++,j++) {
             var myButton = document.createElement('input');
             myButton.type = 'button';
             myButton.style.width = '90px';
             myButton.style.height = '120px ';
             myButton.style.fontSize = 'XX-Large';
-            myButton.style.position = 'absolute';
-            myButton.style.top = '130px';
-            myButton.style.left = left + '%';
             myButton.style.backgroundSize = 'cover';
             myButton.style.backgroundImage = 'url(Images/back.png)';
-            body.appendChild(myButton);
-            left += 2;
+            opponent.appendChild(myButton);
         }
-
-        var myButton = document.createElement('input');
-        myButton.type = 'button';
-        myButton.style.width = '90px';
-        myButton.style.height = '120px ';
-        myButton.style.fontSize = 'XX-Large';
-        myButton.style.position = 'absolute';
-        myButton.style.top = '350px';
-        myButton.style.left = '400px';
-        myButton.style.backgroundSize = 'cover';
-        myButton.style.backgroundImage = 'url(Images/back.png)';
-        body.appendChild(myButton);
-
-
-        var number = myJSON_Object[0].lastCard.number;
-        var color = myJSON_Object[0].lastCard.color;
-        var myButton = document.createElement('input');
-        myButton.type = 'button';
-        myButton.style.width = '90px';
-        myButton.style.height = '120px ';
-        myButton.style.fontSize = 'XX-Large';
-        myButton.style.position = 'absolute';
-        myButton.style.top = '350px';
-        myButton.style.left = '45%';
-        myButton.value = number;
-        myButton.style.backgroundColor = color;
-        body.appendChild(myButton);
+        
     }
     else
     {
+        document.getElementById('ctl00_ContentPlaceHolder1_labelWelcome').style.visibility = 'hidden';
+        turn = myJSON_Object[1].turn.toString();
+
+
+        if (turn == GuID)
+            document.getElementById('ctl00_ContentPlaceHolder1_label1').innerHTML = 'My turn';
+        else
+            document.getElementById('ctl00_ContentPlaceHolder1_label1').innerHTML = 'His turn';
+
         var numOfCards = myJSON_Object[1].numOfCards.toString();
-        var opponentCards = myJSON_Object[1].numOfCards.toString();
-        var left = 25;
-        for (var i = 0; i < numOfCards; i++) {
+        var opponentCards = myJSON_Object[1].oponnentCards.toString();
+        var j = 0;
+        for (var i = 0; i < numOfCards; i++, j++) {
 
             var number = myJSON_Object[1].cards[i].number;
             var color = myJSON_Object[1].cards[i].color;
-            var myButton = document.createElement('input');
-            myButton.type = 'button';
-            myButton.style.width = '90px';
-            myButton.style.height = '120px ';
-            myButton.style.fontSize = 'XX-Large';
-            myButton.style.position = 'absolute';
-            myButton.style.top = '600px';
-            myButton.style.left = left + '%';
-            myButton.value = number;
-            myButton.style.backgroundColor = color;
-            myButton.id = number.toString() + ":" + color.toString();
-            myButton.onclick = function () { myClick(this); };
-            body.appendChild(myButton);
-            left += 5;
+
+            if (document.getElementById(number.toString() + ":" + color.toString()) == null)
+            {
+                var myButton = document.createElement('input');
+
+                myButton.type = 'button';
+                myButton.style.width = '90px';
+                myButton.style.height = '120px ';
+                myButton.style.fontSize = 'XX-Large';
+                myButton.value = number;
+                myButton.style.backgroundColor = color;
+                myButton.id = number.toString() + ":" + color.toString();
+                myButton.onclick = function () { myClick(this); };
+                cards.appendChild(myButton);
+            }
+
         }
-        left = 25;
         for (var i = 0; i < opponentCards; i++) {
-
-            var number = myJSON_Object[1].cards[i].number;
-            var color = myJSON_Object[1].cards[i].color;
             var myButton = document.createElement('input');
             myButton.type = 'button';
             myButton.style.width = '90px';
             myButton.style.height = '120px ';
             myButton.style.fontSize = 'XX-Large';
-            myButton.style.position = 'absolute';
-            myButton.style.top = '130px';
-            myButton.style.left = left + '%';
             myButton.style.backgroundSize = 'cover';
             myButton.style.backgroundImage = 'url(Images/back.png)';
-            body.appendChild(myButton);
+            opponent.appendChild(myButton);
             left += 2;
         }
 
-        var myButton = document.createElement('input');
-        myButton.type = 'button';
-        myButton.style.width = '90px';
-        myButton.style.height = '120px ';
-        myButton.style.fontSize = 'XX-Large';
-        myButton.style.position = 'absolute';
-        myButton.style.top = '350px';
-        myButton.style.left = '400px';
-        myButton.style.backgroundSize = 'cover';
-        myButton.style.backgroundImage = 'url(Images/back.png)';
-        myButton.onclick = function () { AddCard(this); };
-        body.appendChild(myButton);
 
-
-        var number = myJSON_Object[1].lastCard.number;
-        var color = myJSON_Object[1].lastCard.color;
-        var myButton = document.createElement('input');
-        myButton.type = 'button';
-        myButton.style.width = '90px';
-        myButton.style.height = '120px ';
-        myButton.style.fontSize = 'XX-Large';
-        myButton.style.position = 'absolute';
-        myButton.style.top = '350px';
-        myButton.style.left = '45%';
-        myButton.id='lastcard';
-        myButton.value = number;
-        myButton.style.backgroundColor = color;
-        body.appendChild(myButton);
     }
+   
+
+    var deckCards = document.getElementById('deckCards');
+    if (deckCards == null)
+    {
+        deckCards = document.createElement('input');
+        deckCards.type = 'button';
+        deckCards.style.width = '90px';
+        deckCards.style.height = '120px ';
+        deckCards.style.fontSize = 'XX-Large';
+        deckCards.style.backgroundSize = 'cover';
+        deckCards.style.backgroundImage = 'url(Images/back.png)';
+        deckCards.id = 'deckCards';
+        deckCards.onclick = function () { AddCard(this); };
+        middlecards.appendChild(deckCards);
+    }
+
+        
+        var number = myJSON_Object[0].lastCard.number;
+        var color = myJSON_Object[0].lastCard.color;
+
+        var lastCard = document.getElementById("lastcard");
+        if (lastCard == null)
+        {
+            lastCard = document.createElement('input');
+            lastCard.type = 'button';
+            lastCard.style.width = '90px';
+            lastCard.style.height = '120px ';
+            lastCard.style.fontSize = 'XX-Large';
+            lastCard.id = 'lastcard';
+            middlecards.appendChild(lastCard);
+        }
+
+            lastCard.value = number;
+            lastCard.style.backgroundColor = color;
+            
+
 
     
 }
 
 function myClick(myButton) {
-    var lastCard = document.getElementById("lastcard");
-    if (lastCard.value == myButton.value || lastCard.style.backgroundColor == myButton.style.backgroundColor)
+    if (turn==GuID)
     {
-        var url = "Handler.ashx?cmd=move&guid=" + GuID + "&ID=" + myButton.id;
-        xmlHttp.open("POST", url, true);
-        xmlHttp.onreadystatechange = load2;
-        xmlHttp.send();
-        var input = forms[i].getElementsByTagName('input');
-        for (var y = 0; y < input.length; y++) {
-            if (input[y].type == 'submit') {
-                input[y].disabled = 'disabled';
-            }
+        var lastCard = document.getElementById("lastcard");
+        if (lastCard.value == myButton.value || lastCard.style.backgroundColor == myButton.style.backgroundColor) {
+            var url = "Handler.ashx?cmd=move&guid=" + GuID + "&ID=" + myButton.id;
+            cards.removeChild(myButton);
+
+
+            xmlHttp.open("POST", url, true);
+            xmlHttp.onreadystatechange = load2;
+            xmlHttp.send();
         }
     }
 }
 
 function AddCard(myButton) {
-    var url = "Handler.ashx?cmd=addCard&guid=" + GuID;
-    xmlHttp.open("POST", url, true);
-    xmlHttp.onreadystatechange = load2;
-    xmlHttp.send();
-}
+    if (turn==GuID)
+    {
 
-function movebutton(a, b) {
-    var numOfCards = myJSON_Object[0].numOfCards.toString();
+        var url = "Handler.ashx?cmd=addCard&guid=" + GuID;
+        xmlHttp.open("POST", url, true);
+        xmlHttp.onreadystatechange = load2;
+        xmlHttp.send();
+    }
+
 }
 
 

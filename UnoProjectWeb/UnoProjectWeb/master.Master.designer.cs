@@ -9,6 +9,7 @@
 
 
 
+public partial class  Master{
     
     /// <summary>
     /// head control.
