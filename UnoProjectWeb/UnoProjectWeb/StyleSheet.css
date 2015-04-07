@@ -1,0 +1,40 @@
+﻿body {
+}
+
+.PlayCard {
+    -webkit-animation-name: move; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    animation-name: move;
+    animation-duration: 1s;
+}
+
+
+.PlayCard2 {
+    -webkit-animation-name: move; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    animation-name: move;
+    animation-duration: 1s;
+}
+
+.packOfCards {
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes move {
+    from {top: 400px;left:400px}
+    to {top: 700px;left:1100px}
+}
+
+.PlayerCards {
+    -webkit-animation-name: move2; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    animation-name: move2;
+    animation-duration: 1s;
+}
+
+.packOfCards {
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes move2 {
+    from {top: 0;}
+    to {top: -250px;}
+}

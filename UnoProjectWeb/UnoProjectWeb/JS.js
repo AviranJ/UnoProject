@@ -9,6 +9,8 @@ var xmlHttp_Process;
 
 var turn;
 
+var flag;
+
 var Endgame = false;
 
 function load() {
@@ -171,10 +173,11 @@ function Init() {
                 myButton.style.width = '90px';
                 myButton.style.height = '120px ';
                 myButton.style.fontSize = 'XX-Large';
+                myButton.style.position = 'relative';
                 myButton.value = number;
                 myButton.style.backgroundColor = color;
                 myButton.id = number.toString() + ":" + color.toString();
-                myButton.onclick = function () { myClick(this); };
+                myButton.onclick = function () { myClick(this); return false; };
                 cards.appendChild(myButton);
                 left += 5;
             }
@@ -254,10 +257,11 @@ function Init() {
                 myButton.style.width = '90px';
                 myButton.style.height = '120px ';
                 myButton.style.fontSize = 'XX-Large';
+                myButton.style.position = 'relative';
                 myButton.value = number;
                 myButton.style.backgroundColor = color;
                 myButton.id = number.toString() + ":" + color.toString();
-                myButton.onclick = function () { myClick(this); };
+                myButton.onclick = function () { myClick(this); return false; };
                 cards.appendChild(myButton);
             }
 
@@ -311,6 +315,8 @@ function Init() {
                 myButton.style.fontSize = 'XX-Large';
                 myButton.value = number;
                 myButton.style.backgroundColor = color;
+                myButton.style.animationName = move;
+                myButton.style.animationDuration = '3s';
                 myButton.id = number.toString() + ":" + color.toString();
                 myButton.onclick = function () { myClick(this); };
                 cards.appendChild(myButton);
@@ -348,13 +354,13 @@ function Init() {
         packOfCards.style.fontSize = 'XX-Large';
         packOfCards.style.backgroundSize = 'cover';
         packOfCards.style.position = 'absolute';
+        packOfCards.style.top = '400px';
         packOfCards.style.left = '400px';
         packOfCards.style.backgroundImage = 'url(Images/back.png)';
         packOfCards.id = 'packOfCards';
         packOfCards.onclick = function () { AddCard(this); };
         middlecards.appendChild(packOfCards);
     }
-
         
         var number = myJSON_Object[0].lastCard.number;
         var color = myJSON_Object[0].lastCard.color;
@@ -385,13 +391,16 @@ function myClick(myButton) {
     {
         var lastCard = document.getElementById("lastcard");
         if (lastCard.value == myButton.value || lastCard.style.backgroundColor == myButton.style.backgroundColor) {
-            var url = "Handler.ashx?cmd=move&guid=" + GuID + "&ID=" + myButton.id;
-            cards.removeChild(myButton);
+            myButton.className = 'PlayerCards';
+            setTimeout(function () {
+                var url = "Handler.ashx?cmd=move&guid=" + GuID + "&ID=" + myButton.id;
+                xmlHttp.open("POST", url, true);
+                xmlHttp.onreadystatechange = load2;
+                xmlHttp.send();
+                cards.removeChild(myButton);
+            }, 1050);
+            
 
-
-            xmlHttp.open("POST", url, true);
-            xmlHttp.onreadystatechange = load2;
-            xmlHttp.send();
         }
     }
 }
@@ -399,14 +408,43 @@ function myClick(myButton) {
 function AddCard(myButton) {
     if (turn==GuID)
     {
+        var packOfCards = document.getElementById('packOfCards');
+        packOfCards.className = 'PlayCard';
 
-        var url = "Handler.ashx?cmd=addCard&guid=" + GuID;
+        setTimeout(function () {
+            var url = "Handler.ashx?cmd=addCard&guid=" + GuID;
+            xmlHttp.open("POST", url, true);
+            xmlHttp.onreadystatechange = load2;
+            xmlHttp.send();
+        }, 1050);
+        
+
+    }
+}
+
+
+function remove(myButton) {
+    cards.removeChild(myButton);
+}
+
+function move2(a, myButton) {
+
+
+    if (a == 0) {
+        var url = "Handler.ashx?cmd=move&guid=" + GuID + "&ID=" + myButton.id;
         xmlHttp.open("POST", url, true);
         xmlHttp.onreadystatechange = load2;
         xmlHttp.send();
+        cards.removeChild(myButton);
     }
 
+
+    myButton.style.pixelTop += 100;
+
+    window.setTimeout('move2(' + (a - 1).toString() + ',' + myButton + ')', 10);
 }
+
+
 
 
 window.onload = onLoadJavaScript;
