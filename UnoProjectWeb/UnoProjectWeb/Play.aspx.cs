@@ -17,6 +17,10 @@ namespace UnoProjectWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] != null)
+            {
+                User.Value = Session["UserName"].ToString();
+            }
         }
     }
 }

@@ -32,7 +32,7 @@
         </tr>
         
         <tr >
-            <td><div><asp:Label ID="LabelCredit" runat="server" Text="Created By ...."></asp:Label></div></td>
+            <td><div><asp:Label ID="LabelCredit" runat="server" Text="Created By Denis and Aviran"></asp:Label></div></td>
         </tr>
         </table>    
     </td>   

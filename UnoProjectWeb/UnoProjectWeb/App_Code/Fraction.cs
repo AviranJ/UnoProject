@@ -29,6 +29,7 @@ namespace UnoProjectWeb.App_Code
         public int packOfCards;
         public Card lastCard;
         public string clientGuid;
+        public string player;
 
         public Fraction(ArrayList cards, string turn, int oponnentCards, Card lastCard, int packOfCards)
         {

@@ -1,7 +1,15 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Collections;
 using System.Web.Script.Serialization;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Data.SqlClient;
 
 namespace UnoProjectWeb.App_Code
 {
@@ -9,6 +17,8 @@ namespace UnoProjectWeb.App_Code
     {
         public static Player p1, p2;
         public static String turn;
+        public static int gameId;
+        public static int moveNumber;
         public static ArrayList deck = new ArrayList();
         public static Card lastCard;
         private static Object _lock = new Object();
@@ -70,12 +80,12 @@ namespace UnoProjectWeb.App_Code
                     arrFraction[0] = new Fraction(p1.Cards, turn, p2.NumberOfCards, lastCard, deck.Count);
                     arrFraction[1] = new Fraction(p2.Cards, turn, p1.NumberOfCards, lastCard, deck.Count);
 
+                    gameId = r.Next(1000000000);
+                    moveNumber = 1;
+
                     Update(state, guid);
 
 
-
-
-                    
                 }
 
 
@@ -111,19 +121,52 @@ namespace UnoProjectWeb.App_Code
             }
         }
 
-        public static void Move(AsyncResult state, string guid, string id)
+        public static void Move(AsyncResult state, string guid, string id, string user)
         {
             int number = Int32.Parse(id.Split(':')[0]);
             string color = id.Split(':')[1];
-
+            string strSql = "";
+            DataTable dt;
+            int totalWins;
             if (guid == p1.guID)
             {
                 p1.Remove(number, color);
+                if (p1.NumberOfCards == 0)
+                {
+                    strSql = @"
+                               SELECT * FROM Scoreboard U WHERE U.PlayerName = @PlayerName";
+                    dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user)});
+                    totalWins = Int32.Parse(dt.Rows[0]["TotalWins"].ToString());
+
+                    strSql = @"
+                               Update Scoreboard set TotalWins=@TotalWins WHERE  PlayerName=@PlayerName ";
+                    DB.ExecuteNonQuery(strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user), new SqlParameter("@TotalWins", totalWins + 1) });
+
+
+                }
             }
             else
             {
                 p2.Remove(number, color);
+                if (p2.NumberOfCards == 0)
+                {
+                    strSql = @"
+                               SELECT * FROM Scoreboard U WHERE U.PlayerName = @PlayerName";
+                    dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user) });
+                    totalWins = Int32.Parse(dt.Rows[0]["TotalWins"].ToString());
+
+                    strSql = @"
+                               Update Scoreboard set TotalWins=@TotalWins WHERE  PlayerName=@PlayerName ";
+                    DB.ExecuteNonQuery(strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user), new SqlParameter("@TotalWins", totalWins + 1) });
+                }
             }
+
+            string cmdText = @"
+				        INSERT INTO PlayerMoves
+					        (GAMEID,MOVENUMBER,PLAYERNAME,MOVETYPE,CARDCHOSEN,CARDONDECK)
+				        VALUES (@GAMEID,@MOVENUMBER,@PLAYERNAME,@MOVETYPE,@CARDCHOSEN,@CARDONDECK) ";
+            DB.ExecuteNonQuery(cmdText, new SqlParameter[] { new SqlParameter("@GAMEID", gameId), new SqlParameter("@MOVENUMBER", moveNumber), new SqlParameter("@PLAYERNAME", user), new SqlParameter("@MOVETYPE", "Move Card"), new SqlParameter("@CARDCHOSEN", number + " " + color), new SqlParameter("@CARDONDECK", lastCard.number+" "+lastCard.color) });
+            moveNumber++;
 
             turn = turn == p1.guID ? p2.guID : p1.guID;
 
@@ -135,9 +178,11 @@ namespace UnoProjectWeb.App_Code
 
         }
 
-        public static void AddCard(AsyncResult state, string guid)
+        public static void AddCard(AsyncResult state, string guid,string user)
         {
             int numOfCards = deck.Count;
+            int number=-1;
+            string color="";
             if (numOfCards > 0)
             {
                 Random r = new Random();
@@ -147,14 +192,24 @@ namespace UnoProjectWeb.App_Code
                 if (guid == p1.guID)
                 {
                     p1.AddCard((Card)deck[random]);
+                    number = ((Card)deck[random]).number;
+                    color = ((Card)deck[random]).color;
                 }
                 else
                 {
                     p2.AddCard((Card)deck[random]);
+                    number = ((Card)deck[random]).number;
+                    color = ((Card)deck[random]).color;
                 }
                 deck.Remove(deck[random]);
             }
 
+            string cmdText = @"
+				        INSERT INTO PlayerMoves
+					        (GAMEID,MOVENUMBER,PLAYERNAME,MOVETYPE,CARDRECEIVED,CARDONDECK)
+				        VALUES (@GAMEID,@MOVENUMBER,@PLAYERNAME,@MOVETYPE,@CARDRECEIVED,@CARDONDECK) ";
+            DB.ExecuteNonQuery(cmdText, new SqlParameter[] { new SqlParameter("@GAMEID", gameId), new SqlParameter("@MOVENUMBER", moveNumber), new SqlParameter("@PLAYERNAME", user), new SqlParameter("@MOVETYPE", "Pick Card"), new SqlParameter("@CARDRECEIVED", number + " " + color), new SqlParameter("@CARDONDECK", lastCard.number + " " + lastCard.color) });
+            moveNumber++;
 
             turn = turn == p1.guID ? p2.guID : p1.guID;
 
@@ -165,7 +220,41 @@ namespace UnoProjectWeb.App_Code
 
         }
 
-            
+        public static void GetMoveHistory(AsyncResult state)
+        {
+            string cmdText = @"
+				        SELECT * FROM PlayerMoves WHERE GAMEID=@GAMEID";
+            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", cmdText, new SqlParameter[] { new SqlParameter("@GAMEID", gameId) });
+            int numOfMoves = dt.Rows.Count;
+            HistoryMove[] arrMoves = new HistoryMove[numOfMoves];
+            for (int i = 0; i < numOfMoves; i++)
+            {
+                arrMoves[i] = new HistoryMove(Int32.Parse(dt.Rows[i]["GameId"].ToString()), Int32.Parse(dt.Rows[i]["MoveNumber"].ToString()), dt.Rows[i]["PlayerName"].ToString(), dt.Rows[i]["MoveType"].ToString(), dt.Rows[i]["CardChosen"].ToString(), dt.Rows[i]["CardReceived"].ToString(), dt.Rows[i]["CardOnDeck"].ToString());
+            }
+
+            JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
+            string resultStr = myJavaScriptSerializer.Serialize(arrMoves);
+            state._context.Response.Write(resultStr);
+            state.CompleteRequest();
+        }
+
+        public static void GetScoreboard(AsyncResult state)
+        {
+            string cmdText = @"
+				        SELECT * FROM Scoreboard order by TotalWins desc";
+            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", cmdText, new SqlParameter[] { });
+            int numOfUsers = dt.Rows.Count;
+            PlayerScore[] arrScores = new PlayerScore[numOfUsers];
+            for (int i = 0; i < numOfUsers; i++)
+            {
+                arrScores[i] = new PlayerScore(dt.Rows[i]["PlayerName"].ToString(), Int32.Parse(dt.Rows[i]["TotalWins"].ToString()));
+            }
+
+            JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
+            string resultStr = myJavaScriptSerializer.Serialize(arrScores);
+            state._context.Response.Write(resultStr);
+            state.CompleteRequest();
+        }  
 
 
         public static void RegisterClient(AsyncResult state)

@@ -24,6 +24,7 @@
             AsyncResult myAsyncResult = obj as AsyncResult;
             string command = myAsyncResult._context.Request.QueryString["cmd"];
             string guid = myAsyncResult._context.Request.QueryString["guid"];
+            string user = "";
 
             switch (command)
             {
@@ -34,12 +35,14 @@
                     myAsyncResult.CompleteRequest();
                     break;
                 case "move":
-                    string ID = myAsyncResult._context.Request.QueryString["ID"];
-                    AsyncServer.Move(myAsyncResult, guid, ID);
+                     string ID = myAsyncResult._context.Request.QueryString["ID"];
+                    user = myAsyncResult._context.Request.QueryString["user"];
+                    AsyncServer.Move(myAsyncResult, guid, ID, user);
                     myAsyncResult.CompleteRequest();
                     break;
                 case "addCard":
-                    AsyncServer.AddCard(myAsyncResult, guid);
+                    user = myAsyncResult._context.Request.QueryString["user"];
+                    AsyncServer.AddCard(myAsyncResult, guid,user);
                     myAsyncResult.CompleteRequest();
                     break;
                 case "register":
@@ -55,6 +58,12 @@
                     {
                         AsyncServer.UpdateClient(myAsyncResult, guid);
                     }
+                    break;
+                case "History":
+                    AsyncServer.GetMoveHistory(myAsyncResult);
+                    break;
+                case "Scoreboard":
+                    AsyncServer.GetScoreboard(myAsyncResult);
                     break;
             }
         }
