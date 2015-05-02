@@ -17,6 +17,7 @@ namespace UnoProjectWeb
     public class DB
     {
         private static string _ConStr = WebConfigurationManager.ConnectionStrings["AConnectionString"].ConnectionString;
+        private SqlConnection conn;
 
         public static DataTable ExecuteSelect(string tableName, string sqlSelect, params SqlParameter[] paramsList)
         {

@@ -10,6 +10,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
+using System.Configuration;
+using System.Web.Configuration;
 
 namespace UnoProjectWeb.App_Code
 {
@@ -22,6 +24,10 @@ namespace UnoProjectWeb.App_Code
         public static ArrayList deck = new ArrayList();
         public static Card lastCard;
         private static Object _lock = new Object();
+        public static SqlConnection conn;
+        public static SqlCommand command;
+        public static string _ConStr = WebConfigurationManager.ConnectionStrings["AConnectionString"].ConnectionString;
+        public static AsyncResult myState;
 
         private static List<AsyncResult> _clientStateList = new List<AsyncResult>();
 
@@ -222,9 +228,32 @@ namespace UnoProjectWeb.App_Code
 
         public static void GetMoveHistory(AsyncResult state)
         {
-            string cmdText = @"
-				        SELECT * FROM PlayerMoves WHERE GAMEID=@GAMEID";
-            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", cmdText, new SqlParameter[] { new SqlParameter("@GAMEID", gameId) });
+            myState = state;
+
+            string cmdText = "SELECT * FROM PlayerMoves WHERE GAMEID="+gameId;
+
+            AsyncCallback myAsyncCallback = new AsyncCallback(EndProcessRequestGetMoveHistory);
+
+            conn = new SqlConnection(_ConStr + ";Asynchronous Processing=true");
+            conn.Open();
+
+            SqlCommand command = new SqlCommand(cmdText, conn);
+
+            command.BeginExecuteReader(myAsyncCallback, command);
+
+        }
+
+        private static void EndProcessRequestGetMoveHistory(IAsyncResult result)
+        {
+            SqlCommand mySQLCommand = (SqlCommand)result.AsyncState;
+            SqlDataReader myDataReader = mySQLCommand.EndExecuteReader(result);
+            DataTable dt = new DataTable();
+
+            dt.Load(myDataReader);
+            myDataReader.Close();
+            conn.Close();
+
+
             int numOfMoves = dt.Rows.Count;
             HistoryMove[] arrMoves = new HistoryMove[numOfMoves];
             for (int i = 0; i < numOfMoves; i++)
@@ -234,15 +263,40 @@ namespace UnoProjectWeb.App_Code
 
             JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
             string resultStr = myJavaScriptSerializer.Serialize(arrMoves);
-            state._context.Response.Write(resultStr);
-            state.CompleteRequest();
+            myState._context.Response.Write(resultStr);
+            myState.CompleteRequest();
+
         }
+
 
         public static void GetScoreboard(AsyncResult state)
         {
-            string cmdText = @"
-				        SELECT * FROM Scoreboard order by TotalWins desc";
-            DataTable dt = DB.ExecuteSelect("SYSTEM_USERS", cmdText, new SqlParameter[] { });
+            myState = state;
+
+            string cmdText = "SELECT PlayerName, TotalWins FROM Scoreboard order by TotalWins desc";
+
+            AsyncCallback myAsyncCallback = new AsyncCallback(EndProcessRequestGetScoreboard);
+
+            conn = new SqlConnection(_ConStr + ";Asynchronous Processing=true");
+            conn.Open();
+
+            SqlCommand command = new SqlCommand(cmdText, conn);
+
+            command.BeginExecuteReader(myAsyncCallback, command);
+        }
+
+
+        private static void EndProcessRequestGetScoreboard(IAsyncResult result)
+        {
+            SqlCommand mySQLCommand = (SqlCommand)result.AsyncState;
+            SqlDataReader myDataReader = mySQLCommand.EndExecuteReader(result);
+            DataTable dt = new DataTable();
+
+            dt.Load(myDataReader);
+            myDataReader.Close();
+            conn.Close();
+
+
             int numOfUsers = dt.Rows.Count;
             PlayerScore[] arrScores = new PlayerScore[numOfUsers];
             for (int i = 0; i < numOfUsers; i++)
@@ -252,9 +306,9 @@ namespace UnoProjectWeb.App_Code
 
             JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
             string resultStr = myJavaScriptSerializer.Serialize(arrScores);
-            state._context.Response.Write(resultStr);
-            state.CompleteRequest();
-        }  
+            myState._context.Response.Write(resultStr);
+            myState.CompleteRequest();
+        }
 
 
         public static void RegisterClient(AsyncResult state)
@@ -298,6 +352,10 @@ namespace UnoProjectWeb.App_Code
                     {
                         if (_clientStateList[i].ClientGuid == guid)
                             _clientStateList.Remove(_clientStateList[i]);
+                        /*if (guid==p1.guID || guid==p2.guID)
+                        {
+                            Load(state, guid, true);
+                        }*/
                     }
             }
         }

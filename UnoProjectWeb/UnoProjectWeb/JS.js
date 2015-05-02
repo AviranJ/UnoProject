@@ -141,18 +141,6 @@ function Init() {
 
             if (numOfCards == 0 || opponentCards == 0 || packOfCards==0)
             {
-                if (packOfCards == 0)
-                {
-                    if (numOfCards >= opponentCards)
-                        window.alert("You won");
-                    else
-                        window.alert("You lost");
-                }
-                else if (numOfCards==0)
-                    window.alert("You won");
-                else
-                    window.alert("You lost");
-
                 var myNode = document.getElementById("opponent");
                 while (myNode.firstChild) {
                     myNode.removeChild(myNode.firstChild);
@@ -168,11 +156,30 @@ function Init() {
                     myNode.removeChild(myNode.firstChild);
                 }
 
-                var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
-                Endgame = false;
-                xmlHttp.open("POST", url, true);
-                xmlHttp.onreadystatechange = load2;
-                xmlHttp.send();
+                if (packOfCards == 0)
+                {
+                    if (numOfCards >= opponentCards){
+                        window.alert("You won");
+                        var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
+                        Endgame = false;
+                        xmlHttp.open("POST", url, true);
+                        xmlHttp.onreadystatechange = load2;
+                        xmlHttp.send();
+                    }    
+                    else
+                        window.alert("You lost");
+                }
+                else if (numOfCards == 0) {
+                    window.alert("You won");
+                    var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
+                    Endgame = false;
+                    xmlHttp.open("POST", url, true);
+                    xmlHttp.onreadystatechange = load2;
+                    xmlHttp.send();
+                }
+                else
+                    window.alert("You lost");
+
                 return;
             }
 
@@ -248,17 +255,6 @@ function Init() {
 
 
             if (numOfCards == 0 || opponentCards == 0 || packOfCards == 0) {
-                if (packOfCards == 0) {
-                    if (numOfCards >= opponentCards)
-                        window.alert("You won");
-                    else
-                        window.alert("You lost");
-                }
-                else if (numOfCards == 0)
-                    window.alert("You won");
-                else
-                    window.alert("You lost");
-
                 var myNode = document.getElementById("opponent");
                 while (myNode.firstChild) {
                     myNode.removeChild(myNode.firstChild);
@@ -274,11 +270,30 @@ function Init() {
                     myNode.removeChild(myNode.firstChild);
                 }
 
-                var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
-                Endgame = false;
-                xmlHttp.open("POST", url, true);
-                xmlHttp.onreadystatechange = load2;
-                xmlHttp.send();
+                if (packOfCards == 0) {
+                    if (numOfCards >= opponentCards) {
+                        window.alert("You won");
+                        var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
+                        Endgame = false;
+                        xmlHttp.open("POST", url, true);
+                        xmlHttp.onreadystatechange = load2;
+                        xmlHttp.send();
+                    }
+                        
+                    else
+                        window.alert("You lost");
+                }
+                else if (numOfCards == 0){
+                    window.alert("You won");
+                    var url = "Handler.ashx?cmd=load&endgame=true&guid=" + GuID;
+                    Endgame = false;
+                    xmlHttp.open("POST", url, true);
+                    xmlHttp.onreadystatechange = load2;
+                    xmlHttp.send();
+                }
+                else
+                    window.alert("You lost");
+
                 return;
             }
 
@@ -331,8 +346,6 @@ function Init() {
                 opponent.appendChild(myButton);
                 left += 2;
             }
-
-
         }
         else {
             if (document.getElementById("ctl00_ContentPlaceHolder1_ButtonHistory").style.visibility == 'hidden')
@@ -556,7 +569,6 @@ function GetHistory() {
     if (document.getElementById("ctl00_ContentPlaceHolder1_ButtonHistory").value == "Show History")
     {
         document.getElementById("ctl00_ContentPlaceHolder1_ButtonHistory").value = "Hide History";
-        document.getElementById("ctl00_ContentPlaceHolder1_ButtonScoreboard").value = "Show Scoreboard";
     }
     else
     {
@@ -648,13 +660,12 @@ function GetScoreboard() {
     }
     if (document.getElementById("ctl00_ContentPlaceHolder1_ButtonScoreboard").value == "Show Scoreboard") {
         document.getElementById("ctl00_ContentPlaceHolder1_ButtonScoreboard").value = "Hide Scoreboard";
-        document.getElementById("ctl00_ContentPlaceHolder1_ButtonHistory").value = "Show History";
     }
     else {
         document.getElementById("ctl00_ContentPlaceHolder1_ButtonScoreboard").value = "Show Scoreboard";
     }
 
-    var myTable = document.getElementById("ctl00_ContentPlaceHolder1_TableMoveHistory");
+    var myTable = document.getElementById("ctl00_ContentPlaceHolder1_TableScoreboard");
     var rowCount = myTable.rows.length;
     if (rowCount > 0) {
         myTable.style.border = "hidden";
@@ -676,8 +687,7 @@ function GetScoreboardToTable() {
     if (xmlHttp3.readyState == 4) {
         var myJSON_Text = xmlHttp3.responseText;
         myJSON_Object = eval(myJSON_Text);
-        var table = document.getElementById('ctl00_ContentPlaceHolder1_TableMoveHistory');
-
+        var table = document.getElementById('ctl00_ContentPlaceHolder1_TableScoreboard');
         // Add header to table
         headerRow = document.createElement("tr");
         HeadelCol = document.createElement("th");

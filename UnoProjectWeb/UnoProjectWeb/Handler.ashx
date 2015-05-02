@@ -21,6 +21,7 @@
 
         private void RequestWorker(Object obj)
         {
+            
             AsyncResult myAsyncResult = obj as AsyncResult;
             string command = myAsyncResult._context.Request.QueryString["cmd"];
             string guid = myAsyncResult._context.Request.QueryString["guid"];

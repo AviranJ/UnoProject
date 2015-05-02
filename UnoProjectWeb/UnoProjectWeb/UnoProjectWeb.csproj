@@ -68,6 +68,7 @@
     <Content Include="Default.aspx" />
     <Content Include="JS.js" />
     <Content Include="Play.aspx" />
+    <Content Include="StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +78,8 @@
     <Content Include="App_Code\AsyncResult.cs" />
     <Content Include="App_Code\AsyncServer.cs" />
     <Content Include="App_Code\Fraction.cs" />
+    <Content Include="App_Code\PlayerScore.cs" />
+    <Content Include="App_Code\HistoryMove.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -92,8 +95,6 @@
     <Compile Include="Dev.aspx.designer.cs">
       <DependentUpon>Dev.aspx</DependentUpon>
     </Compile>
-    <Compile Include="enums\UnoCards.cs" />
-    <Compile Include="enums\UnoColours.cs" />
     <Compile Include="master.Master.cs">
       <DependentUpon>master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
