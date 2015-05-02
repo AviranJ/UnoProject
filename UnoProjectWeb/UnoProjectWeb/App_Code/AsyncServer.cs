@@ -141,12 +141,7 @@ namespace UnoProjectWeb.App_Code
                 {
                     strSql = @"
                                SELECT * FROM Scoreboard U WHERE U.PlayerName = @PlayerName";
-                    dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user)});
-                    totalWins = Int32.Parse(dt.Rows[0]["TotalWins"].ToString());
-
-                    strSql = @"
-                               Update Scoreboard set TotalWins=@TotalWins WHERE  PlayerName=@PlayerName ";
-                    DB.ExecuteNonQuery(strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user), new SqlParameter("@TotalWins", totalWins + 1) });
+                    DB.AddWin(strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user) }, user);
 
 
                 }
@@ -158,12 +153,7 @@ namespace UnoProjectWeb.App_Code
                 {
                     strSql = @"
                                SELECT * FROM Scoreboard U WHERE U.PlayerName = @PlayerName";
-                    dt = DB.ExecuteSelect("SYSTEM_USERS", strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user) });
-                    totalWins = Int32.Parse(dt.Rows[0]["TotalWins"].ToString());
-
-                    strSql = @"
-                               Update Scoreboard set TotalWins=@TotalWins WHERE  PlayerName=@PlayerName ";
-                    DB.ExecuteNonQuery(strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user), new SqlParameter("@TotalWins", totalWins + 1) });
+                    DB.AddWin(strSql, new SqlParameter[] { new SqlParameter("@PlayerName", user) }, user);
                 }
             }
 
