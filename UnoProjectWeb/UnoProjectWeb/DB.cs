@@ -20,6 +20,7 @@ namespace UnoProjectWeb
         private static SqlConnection conn;
         private static string user;
 
+        //For login only
         public static DataTable ExecuteSelect(string tableName, string sqlSelect, params SqlParameter[] paramsList)
         {
             
@@ -73,7 +74,6 @@ namespace UnoProjectWeb
             AsyncCallback myAsyncCallback = new AsyncCallback(EndProcessRequestAddTotalWins);
 
             conn = new SqlConnection(_ConStr + ";Asynchronous Processing=true");
-            conn.Open();
 
             SqlCommand myCommand = new SqlCommand(sqlSelect, conn);
 
